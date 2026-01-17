@@ -10,7 +10,7 @@ import {
 
 export function GlobalStatsSection() {
     return (
-        <section className="w-full max-w-[1600px] mx-auto px-6 py-12 md:py-20 relative overflow-hidden">
+        <section className="w-full px-6 py-12 md:py-20 relative overflow-hidden">
             <div className="relative flex flex-col xl:flex-row gap-12 xl:items-center">
 
                 {/* Left Side (Stats) */}

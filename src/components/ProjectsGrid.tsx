@@ -17,7 +17,7 @@ export function ProjectsGrid({ initialProjects, title = "Open Source Projects" }
 
     return (
         <section id="projects" className="px-4 sm:px-6 py-20 sm:py-28">
-            <div className="mx-auto max-w-7xl">
+            <div className="w-full px-2 sm:px-4">
                 <div className="mb-10 sm:mb-14 flex flex-col gap-6 sm:gap-8 sm:flex-row sm:items-end sm:justify-between">
                     <div className="space-y-3 animate-fade-in-up">
                         <p className="font-mono text-xs uppercase tracking-[0.25em] sm:tracking-[0.35em] text-primary">Artifacts</p>

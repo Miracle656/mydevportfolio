@@ -1,21 +1,18 @@
 import { useState, useEffect } from "react"
 import { useLocation, Link } from "react-router-dom"
 import { cn } from "@/lib/utils"
-import { Github, Twitter, Linkedin } from "lucide-react"
+import { Github, Linkedin } from "lucide-react"
 import { ThemeToggle } from "./ThemeToggle"
 // import { ThemeChanger } from "./ThemeChanger" 
 
 const navItems = [
     { label: "Home", href: "/" },
-    //   { label: "Projects", href: "/projects" }, // Removed generic projects link for now, focusing on selector
-    { label: "Workbench", href: "/workbench" },
-    //   { label: "Blog", href: "/blog" },
+    { label: "Projects", href: "/projects" },
 ]
 
 const socialLinks = [
-    { label: "GitHub", href: "https://github.com/ehsanghaffar", icon: Github },
-    { label: "Twitter", href: "https://twitter.com/ehsanghaffar", icon: Twitter },
-    { label: "LinkedIn", href: "https://linkedin.com/in/ehsanghaffar", icon: Linkedin },
+    { label: "GitHub", href: "https://github.com/Miracle656/", icon: Github },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/ebube-ukpai-2960a6225/", icon: Linkedin },
 ]
 
 export function Header() {
@@ -45,7 +42,7 @@ export function Header() {
                 isScrolled ? "border-b border-border/50 bg-background/80 backdrop-blur-xl shadow-sm" : "bg-transparent",
             )}
         >
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 py-4">
+            <div className="w-full px-4 sm:px-8 py-4">
                 <nav className="flex items-center justify-between">
                     <Link to="/" className="group flex items-center gap-3">
                         <div className="relative flex h-9 w-9 items-center justify-center rounded-lg border border-primary/50 bg-primary/10 font-mono text-sm text-primary transition-all duration-400 group-hover:border-primary group-hover:bg-primary group-hover:text-primary-foreground group-hover:scale-105 group-hover:shadow-lg group-hover:shadow-primary/25">

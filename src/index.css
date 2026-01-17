@@ -1,18 +1,33 @@
 @import "tailwindcss";
-@import 'tw-animate-css';
 
 @font-face {
-  font-family: 'Sentient';
-  src: url('./assets/Sentient-Extralight.woff') format('woff');
-  font-weight: 200;
+  font-family: 'Space Mono';
+  src: url('./assets/Space_Mono/SpaceMono-Regular.ttf') format('truetype');
+  font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Sentient';
-  src: url('./assets/Sentient-LightItalic.woff') format('woff');
-  font-weight: 300;
+  font-family: 'Space Mono';
+  src: url('./assets/Space_Mono/SpaceMono-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Space Mono';
+  src: url('./assets/Space_Mono/SpaceMono-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Space Mono';
+  src: url('./assets/Space_Mono/SpaceMono-BoldItalic.ttf') format('truetype');
+  font-weight: 700;
   font-style: italic;
   font-display: swap;
 }
@@ -20,8 +35,8 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-sans: 'Geist', 'Geist Fallback', sans-serif;
-  --font-mono: 'Geist Mono', 'Geist Mono Fallback', monospace;
+  --font-sans: "Space Mono", monospace;
+  --font-mono: "Space Mono", monospace;
   --font-sentient: 'Sentient', sans-serif;
 
   /* Map Tailwind theme keys to CSS variables */
@@ -141,7 +156,7 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground overflow-x-hidden;
   }
 }
 
@@ -237,9 +252,18 @@
 }
 
 .glass {
-  @apply backdrop-blur-md bg-white/10 border-white/20;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  border-width: 1px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .hover-lift {
-  @apply transition-transform duration-300 hover:-translate-y-1;
+  transition-property: transform;
+  transition-duration: 300ms;
+}
+
+.hover-lift:hover {
+  transform: translateY(-0.25rem);
 }

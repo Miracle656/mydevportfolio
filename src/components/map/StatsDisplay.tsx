@@ -268,7 +268,7 @@ function MetricRow({ label, baseValue, incrementRate, showRate = false }: { labe
 }
 
 export function TotalRequests() {
-    const { value, rate } = useAnimatedNumber(stats.totalRequests, 450000);
+    const { value, rate } = useAnimatedNumber(stats.totalRequests, 150);
 
     return (
         <div className="space-y-2">
@@ -313,7 +313,7 @@ function CountryRow({ country, incrementRate }: { country: typeof topCountries[0
 }
 
 export function TopCountries() {
-    const incrementRates = [160000, 24000, 19000, 17000, 15000, 15000, 14000];
+    const incrementRates = [50, 40, 30, 20, 10, 5, 5];
 
     return (
         <div className="space-y-2">
@@ -354,19 +354,19 @@ export function StatsGrid() {
                 <StatCard
                     title="Total deployments"
                     baseValue={stats.totalDeployments}
-                    incrementRate={24}
-                    infoContent="The number of deployments created across all Vercel projects."
+                    incrementRate={1} // Slower rate
+                    infoContent="Total number of portfolio projects deployed."
                     href="#"
                     className="flex-1"
                 />
                 <StatCard
                     title="AI Gateway"
-                    infoContent="A unified interface for AI model requests with caching and rate limiting."
+                    infoContent="Requests processed by AI features."
                     href="#"
                     className="flex-1"
                 >
                     <ul className="space-y-1 list-none pl-0 mt-2">
-                        <MetricRow label="Requests" baseValue={stats.aiGatewayRequests} incrementRate={95} />
+                        <MetricRow label="Requests" baseValue={stats.aiGatewayRequests} incrementRate={2} />
                     </ul>
                 </StatCard>
             </div>
@@ -375,8 +375,8 @@ export function StatsGrid() {
                 <StatCard
                     title="Firewall actions"
                     baseValue={stats.firewallActions.total}
-                    incrementRate={29000}
-                    infoContent="Firewall protects applications from malicious traffic."
+                    incrementRate={5}
+                    infoContent="Security events handled."
                     href="#"
                     className="flex-1"
                 >
@@ -384,19 +384,13 @@ export function StatsGrid() {
                         <MetricRow
                             label="System blocks"
                             baseValue={stats.firewallActions.systemBlocks}
-                            incrementRate={5400}
+                            incrementRate={2}
                             showRate
                         />
                         <MetricRow
-                            label="System challenges"
+                            label="Challenges"
                             baseValue={stats.firewallActions.systemChallenges}
-                            incrementRate={12300}
-                            showRate
-                        />
-                        <MetricRow
-                            label="Custom WAF blocks"
-                            baseValue={stats.firewallActions.customWafBlocks}
-                            incrementRate={1270}
+                            incrementRate={3}
                             showRate
                         />
                     </ul>
@@ -406,24 +400,24 @@ export function StatsGrid() {
             <div className="flex flex-col gap-1.5">
                 <StatCard
                     title="Bot Management"
-                    infoContent="Bot Management identifies and blocks malicious automated traffic."
+                    infoContent="Automated traffic filtering."
                     href="#"
                     className="flex-1"
                 >
                     <ul className="space-y-1 list-none pl-0 mt-2">
-                        <MetricRow label="Bots blocked" baseValue={stats.botManagement.botsBlocked} incrementRate={1600} />
+                        <MetricRow label="Bots blocked" baseValue={stats.botManagement.botsBlocked} incrementRate={1} />
                         <MetricRow
                             label="Humans verified"
                             baseValue={stats.botManagement.humansVerified}
-                            incrementRate={9300}
+                            incrementRate={10}
                         />
                     </ul>
                 </StatCard>
                 <StatCard
                     title="Cache"
                     baseValue={stats.cacheHits}
-                    incrementRate={305000}
-                    infoContent="Cache hits represent requests served directly from local cache."
+                    incrementRate={50}
+                    infoContent="Requests served from edge cache."
                     href="#"
                     className="flex-1"
                 >

@@ -34,7 +34,7 @@ export function HeroSection() {
 
     return (
         <section className="relative px-4 sm:px-6 pt-28 sm:pt-36 pb-16 sm:pb-24">
-            <div className="mx-auto max-w-7xl">
+            <div className="w-full px-4 sm:px-6">
                 <div className="grid gap-12 lg:grid-cols-2 lg:gap-20 lg:items-center lg:min-h-[70vh]">
                     {/* Left column - Text */}
                     <div className="space-y-8 sm:space-y-10">
@@ -82,7 +82,7 @@ export function HeroSection() {
                     </div>
 
                     {/* Right column - ASCII Art / Visual */}
-                    <div className="relative animate-scale-in stagger-4">
+                    <div className="relative animate-scale-in stagger-4 overflow-visible md:overflow-visible">
                         <div className="relative rounded-xl border border-border bg-card/60 glass p-5 sm:p-8 hover-lift">
                             {/* Terminal header dots */}
                             <div className="absolute top-4 left-4 flex items-center gap-2">

@@ -1,16 +1,15 @@
-import { Github, Twitter, Linkedin, Mail, ExternalLink, Heart } from "lucide-react"
+import { Github, Linkedin, Mail, ExternalLink, Heart } from "lucide-react"
 
 const socialLinks = [
-    { label: "GitHub", href: "https://github.com/ehsanghaffar", handle: "@ehsanghaffar", icon: Github },
-    { label: "Twitter", href: "https://twitter.com/ehsanghaffar", handle: "@ehsanghaffar", icon: Twitter },
-    { label: "LinkedIn", href: "https://linkedin.com/in/ehsanghaffar", handle: "/in/ehsanghaffar", icon: Linkedin },
-    { label: "Email", href: "mailto:hello@ehsanghaffar.dev", handle: "hello@ehsanghaffar.dev", icon: Mail },
+    { label: "GitHub", href: "https://github.com/Miracle656/", handle: "@Miracle656", icon: Github },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/ebube-ukpai-2960a6225/", handle: "Ebube Ukpai", icon: Linkedin },
+    { label: "Email", href: "mailto:iupacnumen2020@gmail.com", handle: "iupacnumen2020@gmail.com", icon: Mail },
 ]
 
 export function Footer() {
     return (
         <footer id="connect" className="border-t border-border/30 px-4 sm:px-6 py-20 sm:py-28">
-            <div className="mx-auto max-w-7xl">
+            <div className="w-full px-6 sm:px-8">
                 <div className="grid gap-12 sm:gap-16 lg:grid-cols-2">
                     {/* Left column */}
                     <div className="space-y-6 sm:space-y-8 animate-fade-in-up">
@@ -28,7 +27,7 @@ export function Footer() {
 
                         <div className="pt-2">
                             <a
-                                href="mailto:hello@ehsanghaffar.dev"
+                                href="mailto:iupacnumen2020@gmail.com"
                                 className="group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-xl border border-primary bg-primary/10 px-8 py-4 sm:py-4 font-mono text-sm text-primary transition-all duration-500 hover:text-primary-foreground active:scale-[0.98] w-full sm:w-auto"
                             >
                                 <span className="relative z-10">send a signal</span>
@@ -96,7 +95,7 @@ export function Footer() {
                     </div>
 
                     <p className="font-mono text-xs text-muted-foreground text-center sm:text-right">
-                        © {new Date().getFullYear()} EINCODE — All experiments reserved
+                        © {new Date().getFullYear()} Miracle656 — All experiments reserved
                     </p>
                 </div>
             </div>
