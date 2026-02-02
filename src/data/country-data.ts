@@ -10,29 +10,29 @@ export interface RegionMarker {
 }
 
 export const topCountries = [
-    { code: "NG", name: "Nigeria", requests: 24500, color: "#16a34a" }, // Green for Nigeria
-    { code: "US", name: "United States", requests: 12400, color: "#2563eb" },
-    { code: "GB", name: "United Kingdom", requests: 8500, color: "#ea580c" },
-    { code: "DE", name: "Germany", requests: 5200, color: "#f59e0b" },
-    { code: "IN", name: "India", requests: 4100, color: "#9333ea" },
-    { code: "CA", name: "Canada", requests: 3800, color: "#db2777" },
-    { code: "ZA", name: "South Africa", requests: 2900, color: "#dc2626" },
+    { code: "LG", name: "Lagos", requests: 24500, color: "#16a34a" }, // Green for Lagos
+    { code: "KN", name: "Kano", requests: 12400, color: "#2563eb" },
+    { code: "RV", name: "Rivers", requests: 8500, color: "#ea580c" },
+    { code: "FC", name: "Abuja FCT", requests: 5200, color: "#f59e0b" },
+    { code: "OY", name: "Oyo", requests: 4100, color: "#9333ea" },
+    { code: "KD", name: "Kaduna", requests: 3800, color: "#db2777" },
+    { code: "EN", name: "Enugu", requests: 2900, color: "#dc2626" },
 ];
 
-// Simplified for portfolio scale
+// Simplified for portfolio scale - Nigerian states
 export const countryRequests: Record<string, CountryData> = {
-    NG: { value: 24500, color: "#16a34a" },
-    US: { value: 12400, color: "#2563eb" },
-    GB: { value: 8500, color: "#ea580c" },
-    DE: { value: 5200, color: "#f59e0b" },
-    IN: { value: 4100, color: "#9333ea" },
-    CA: { value: 3800, color: "#db2777" },
-    ZA: { value: 2900, color: "#dc2626" },
-    // Add others with smaller, random values
-    FR: { value: 1200, color: "#475569" },
-    BR: { value: 900, color: "#475569" },
-    JP: { value: 800, color: "#475569" },
-    AU: { value: 750, color: "#475569" },
+    LG: { value: 24500, color: "#16a34a" }, // Lagos
+    KN: { value: 12400, color: "#2563eb" }, // Kano
+    RV: { value: 8500, color: "#ea580c" }, // Rivers
+    FC: { value: 5200, color: "#f59e0b" }, // Abuja FCT
+    OY: { value: 4100, color: "#9333ea" }, // Oyo
+    KD: { value: 3800, color: "#db2777" }, // Kaduna
+    EN: { value: 2900, color: "#dc2626" }, // Enugu
+    // Add other states with smaller values
+    AN: { value: 1200, color: "#475569" }, // Anambra
+    DT: { value: 900, color: "#475569" }, // Delta
+    ED: { value: 800, color: "#475569" }, // Edo
+    OG: { value: 750, color: "#475569" }, // Ogun
 };
 
 export const regionMarkers: RegionMarker[] = [

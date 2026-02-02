@@ -7,6 +7,13 @@ function useAnimatedNumber(baseValue: number, incrementRatePerSecond: number) {
     const [displayRate, setDisplayRate] = useState(incrementRatePerSecond);
 
     useEffect(() => {
+        // If incrementRate is 0, don't animate - just show the static value
+        if (incrementRatePerSecond === 0) {
+            setValue(baseValue);
+            setDisplayRate(0);
+            return;
+        }
+
         const updatesPerSecond = 20;
         const baseIncrement = incrementRatePerSecond / updatesPerSecond;
 
@@ -20,7 +27,7 @@ function useAnimatedNumber(baseValue: number, incrementRatePerSecond: number) {
         }, 1000 / updatesPerSecond);
 
         return () => clearInterval(interval);
-    }, [incrementRatePerSecond]);
+    }, [incrementRatePerSecond, baseValue]);
 
     return { value, rate: displayRate };
 }
@@ -179,13 +186,13 @@ function StatCard({
     const { value } = useAnimatedNumber(baseValue || 0, incrementRate || 0);
 
     const statsContent = (
-        <div className="bg-zinc-900/50 p-4 md:p-6 w-full min-h-[120px] h-full border border-zinc-800 rounded-md">
+        <div className="bg-card/60 p-4 md:p-6 w-full min-h-[120px] h-full border border-border rounded-md">
             <div className="space-y-2">
-                <h2 className="my-0 font-mono font-medium text-sm tracking-tight uppercase text-zinc-100 pr-6">
+                <h2 className="my-0 font-mono font-medium text-sm tracking-tight uppercase text-foreground pr-6">
                     {title}
                 </h2>
                 {baseValue !== undefined && (
-                    <div className="text-3xl md:text-4xl tracking-normal font-mono tabular-nums text-zinc-100">
+                    <div className="text-3xl md:text-4xl tracking-normal font-mono tabular-nums text-foreground">
                         {formatNumber(value)}
                     </div>
                 )}
@@ -195,12 +202,12 @@ function StatCard({
     );
 
     const infoContentView = (
-        <div className="bg-zinc-900 p-4 md:p-6 w-full h-full overflow-y-auto flex flex-col gap-y-2 border border-zinc-800 rounded-md">
+        <div className="bg-card p-4 md:p-6 w-full h-full overflow-y-auto flex flex-col gap-y-2 border border-border rounded-md">
             {href ? (
                 <a
                     href={href}
                     tabIndex={showInfo ? 0 : -1}
-                    className="my-0 font-mono font-medium text-sm tracking-tight uppercase text-zinc-100 hover:underline underline-offset-2 inline-flex gap-x-0.5 items-center w-fit shrink-0"
+                    className="my-0 font-mono font-medium text-sm tracking-tight uppercase text-foreground hover:underline underline-offset-2 inline-flex gap-x-0.5 items-center w-fit shrink-0"
                 >
                     {title}
                     <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
@@ -208,11 +215,11 @@ function StatCard({
                     </svg>
                 </a>
             ) : (
-                <span className="my-0 font-mono font-medium text-sm tracking-tight uppercase text-zinc-100 shrink-0">
+                <span className="my-0 font-mono font-medium text-sm tracking-tight uppercase text-foreground shrink-0">
                     {title}
                 </span>
             )}
-            <span className="tracking-tight text-sm text-zinc-400 leading-relaxed line-clamp-6">
+            <span className="tracking-tight text-sm text-muted-foreground leading-relaxed line-clamp-6">
                 {infoContent}
             </span>
         </div>
@@ -234,7 +241,7 @@ function StatCard({
                         aria-label={`Learn more about ${title}`}
                         type="button"
                         onClick={() => setShowInfo(!showInfo)}
-                        className="p-1 m-0 bg-transparent text-zinc-400 border-none md:border md:border-solid border-zinc-600 hover:text-white hover:bg-zinc-800 transition-colors duration-150 flex items-center justify-center outline-none focus-visible:ring cursor-pointer rounded"
+                        className="p-1 m-0 bg-transparent text-muted-foreground border-none md:border md:border-solid border-border hover:text-foreground hover:bg-secondary transition-colors duration-150 flex items-center justify-center outline-none focus-visible:ring cursor-pointer rounded"
                     >
                         <InfoIcon />
                     </button>
@@ -244,28 +251,7 @@ function StatCard({
     );
 }
 
-function MetricRow({ label, baseValue, incrementRate, showRate = false }: { label: string; baseValue: number; incrementRate: number; showRate?: boolean }) {
-    const { value, rate } = useAnimatedNumber(baseValue, incrementRate);
 
-    return (
-        <li className="flex flex-wrap items-center justify-between gap-x-3">
-            <h3 className="m-0 font-mono font-normal text-sm text-zinc-400 uppercase">
-                {label}
-            </h3>
-            <div className="flex items-center gap-3 md:gap-4 text-right">
-                <div className="text-zinc-200 text-sm font-mono tabular-nums">
-                    {formatNumber(value)}
-                </div>
-                {showRate && (
-                    <div className="w-16 text-zinc-400 text-right text-sm font-mono tabular-nums">
-                        <span>{formatNumber(rate)}</span>
-                        <span aria-label="per second">/s</span>
-                    </div>
-                )}
-            </div>
-        </li>
-    );
-}
 
 export function TotalRequests() {
     const { value, rate } = useAnimatedNumber(stats.totalRequests, 150);
@@ -318,7 +304,7 @@ export function TopCountries() {
     return (
         <div className="space-y-2">
             <h2 className="my-0 font-mono font-medium text-sm tracking-tight uppercase text-zinc-400">
-                Top countries by requests
+                Top states by requests
             </h2>
             <ul className="list-none pl-0 space-y-1">
                 {topCountries.map((country, index) => (
@@ -340,90 +326,53 @@ export function RegionCount() {
                 <span className="text-[10px] text-zinc-400">▲</span>
             </span>
             <div className="text-left">
-                <span className="inline-block my-0 font-medium text-[16px] text-zinc-200">19</span>
-                <span className="font-medium text-[16px] text-zinc-500 tracking-tight">&nbsp;Regions</span>
+                <span className="inline-block my-0 font-medium text-[16px] text-zinc-200">37</span>
+                <span className="font-medium text-[16px] text-zinc-500 tracking-tight">&nbsp;States</span>
             </div>
         </div>
     );
 }
 
 export function StatsGrid() {
+    // Calculate total projects across all categories
+    const totalProjects = 9; // Based on the projects in mock-data.ts (3 Sui + 3 EVM + 3 Bitcoin)
+
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1.5">
-            <div className="flex flex-col gap-1.5">
-                <StatCard
-                    title="Total deployments"
-                    baseValue={stats.totalDeployments}
-                    incrementRate={1} // Slower rate
-                    infoContent="Total number of portfolio projects deployed."
-                    href="#"
-                    className="flex-1"
-                />
-                <StatCard
-                    title="AI Gateway"
-                    infoContent="Requests processed by AI features."
-                    href="#"
-                    className="flex-1"
-                >
-                    <ul className="space-y-1 list-none pl-0 mt-2">
-                        <MetricRow label="Requests" baseValue={stats.aiGatewayRequests} incrementRate={2} />
-                    </ul>
-                </StatCard>
-            </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-1.5">
+            {/* Total Projects Card */}
+            <StatCard
+                title="Total Projects"
+                baseValue={totalProjects}
+                incrementRate={0} // Static count
+                infoContent="Total number of blockchain projects built across Sui, EVM, and Bitcoin ecosystems."
+                href="/projects"
+                className="flex-1"
+            >
+                <p className="text-zinc-400 text-sm font-mono mt-1">Shipped & In Progress</p>
+            </StatCard>
 
-            <div className="flex flex-col gap-1.5">
-                <StatCard
-                    title="Firewall actions"
-                    baseValue={stats.firewallActions.total}
-                    incrementRate={5}
-                    infoContent="Security events handled."
-                    href="#"
-                    className="flex-1"
-                >
-                    <ul className="space-y-1 list-none pl-0 mt-4">
-                        <MetricRow
-                            label="System blocks"
-                            baseValue={stats.firewallActions.systemBlocks}
-                            incrementRate={2}
-                            showRate
-                        />
-                        <MetricRow
-                            label="Challenges"
-                            baseValue={stats.firewallActions.systemChallenges}
-                            incrementRate={3}
-                            showRate
-                        />
-                    </ul>
-                </StatCard>
-            </div>
-
-            <div className="flex flex-col gap-1.5">
-                <StatCard
-                    title="Bot Management"
-                    infoContent="Automated traffic filtering."
-                    href="#"
-                    className="flex-1"
-                >
-                    <ul className="space-y-1 list-none pl-0 mt-2">
-                        <MetricRow label="Bots blocked" baseValue={stats.botManagement.botsBlocked} incrementRate={1} />
-                        <MetricRow
-                            label="Humans verified"
-                            baseValue={stats.botManagement.humansVerified}
-                            incrementRate={10}
-                        />
-                    </ul>
-                </StatCard>
-                <StatCard
-                    title="Cache"
-                    baseValue={stats.cacheHits}
-                    incrementRate={50}
-                    infoContent="Requests served from edge cache."
-                    href="#"
-                    className="flex-1"
-                >
-                    <p className="text-zinc-400 text-sm font-mono mt-1">Cache hits served</p>
-                </StatCard>
-            </div>
+            {/* Tech Stack Card */}
+            <StatCard
+                title="Tech Stack"
+                infoContent="Primary technologies and frameworks used in development."
+                href="#"
+                className="flex-1"
+            >
+                <ul className="space-y-2 list-none pl-0 mt-3">
+                    <li className="flex items-center gap-2 text-sm">
+                        <span className="w-2 h-2 rounded-full bg-primary"></span>
+                        <span className="text-zinc-300 font-mono">Sui Move, Solidity, Bitcoin Script</span>
+                    </li>
+                    <li className="flex items-center gap-2 text-sm">
+                        <span className="w-2 h-2 rounded-full bg-blue-500"></span>
+                        <span className="text-zinc-300 font-mono">React, TypeScript, Next.js</span>
+                    </li>
+                    <li className="flex items-center gap-2 text-sm">
+                        <span className="w-2 h-2 rounded-full bg-green-500"></span>
+                        <span className="text-zinc-300 font-mono">Node.js, Web3.js, Ethers.js</span>
+                    </li>
+                </ul>
+            </StatCard>
         </div>
     );
 }

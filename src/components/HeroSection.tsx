@@ -39,8 +39,8 @@ export function HeroSection() {
                     {/* Left column - Text */}
                     <div className="space-y-8 sm:space-y-10">
                         <div className="space-y-3 animate-fade-in-up">
-                            <p className="font-mono text-xs uppercase tracking-[0.25em] sm:tracking-[0.35em] text-primary">
-                                EinCode — Where Code Meets Curiosity
+                            <p className="font-mono text-lg sm:text-xl lg:text-2xl font-extrabold tracking-tight text-primary">
+                                Ebube Miracle Ukpai
                             </p>
                             <h1 className="text-4xl font-bold tracking-tight sm:text-4xl lg:text-5xl xl:text-6xl text-balance">
                                 Forging digital
@@ -54,9 +54,7 @@ export function HeroSection() {
                         </div>
 
                         <p className="max-w-lg text-base sm:text-lg leading-relaxed text-muted-foreground animate-fade-in-up stagger-2">
-                            Welcome to my digital workshop — a space for experiments, prototypes, and open-source artifacts. Currently
-                            building at <span className="text-foreground font-medium">...</span>. Here, ideas are forged,
-                            tested, and refined. Not a portfolio. A laboratory.
+                            Fullstack blockchain developer specializing in building decentralized applications across multiple ecosystems including Sui, EVM chains, and Bitcoin. Passionate about creating innovative Web3 solutions, smart contract development, and bridging traditional web technologies with blockchain infrastructure.
                         </p>
 
                         <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up stagger-3">
@@ -70,10 +68,10 @@ export function HeroSection() {
                                 <span className="absolute inset-0 -translate-x-full bg-primary transition-transform duration-500 group-hover:translate-x-0" />
                             </a>
                             <Link
-                                to="/introduction"
+                                to="/resume"
                                 className="group inline-flex items-center justify-center gap-3 rounded-lg border border-border px-7 py-4 sm:py-3.5 font-mono text-sm text-muted-foreground transition-all duration-300 hover:border-foreground hover:text-foreground hover:bg-secondary/50 active:scale-[0.98]"
                             >
-                                <span>introduction</span>
+                                <span>view resume</span>
                                 <span className="opacity-0 -translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">
                                     →
                                 </span>
@@ -134,7 +132,7 @@ export function HeroSection() {
                             className="absolute -bottom-3 sm:-bottom-6 -left-2 sm:-left-6 rounded-lg border border-border bg-card glass px-3 sm:px-4 py-1.5 font-mono text-[11px] sm:text-xs text-muted-foreground animate-float"
                             style={{ animationDelay: "1s" }}
                         >
-                            Dec. 2025
+                            {new Date().toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
                         </div>
 
                         <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] rounded-full bg-primary/5 blur-3xl" />
