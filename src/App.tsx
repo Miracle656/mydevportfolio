@@ -4,6 +4,7 @@ import { Projects } from "./pages/Projects"
 import { Resume } from "./pages/Resume"
 import { ProjectPage } from "./pages/ProjectPage"
 import { IntroSplash } from "./components/intro/IntroSplash"
+import { ScrollToTop } from "./components/ScrollToTop"
 import { useState } from "react"
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
+        <ScrollToTop />
         {!introComplete && (
           <IntroSplash onComplete={() => setIntroComplete(true)} />
         )}
